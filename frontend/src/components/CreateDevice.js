@@ -113,7 +113,7 @@ class CreateDevice extends Component {
         return (
             <div className="center">
                 <section id="content">
-                    <h1 className="subheader">Nuevo Dispositivo</h1>
+                    <h1 className="subheader">New Device</h1>
 
                     {/*Mostrar Datos del Formulario*/}
                     {this.state.device.type &&
@@ -124,7 +124,7 @@ class CreateDevice extends Component {
 
                     <form className="mid-form" onSubmit={this.saveDevice} onChange={this.changeState}>
                         <div className="form-group">
-                            <label htmlFor="type">Tipo</label>
+                            <label htmlFor="type">Type</label>
                             <select  id="type" name="type" ref={this.typeRef}>
                                 <option value="fan">Fan</option>
                                 <option value="Light">Light</option>
@@ -133,7 +133,7 @@ class CreateDevice extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="label">Name</label>
+                            <label htmlFor="label">Label</label>
                             <input type="text" name="label" ref={this.labelRef}></input>
                             {this.validator.message('label', this.state.device.label, 'required|min:3|max:400|alpha_num_space')}
                         </div>
@@ -144,7 +144,7 @@ class CreateDevice extends Component {
                             {this.validator.message('manufacturer', this.state.device.manufacturer, 'required|min:2|max:400|alpha_num_space')}
                         </div>
 
-                        <input type="submit" value="Guardar" className="btn btn-success" />
+                        <input type="submit" value="Save" className="btn btn-success" />
                     </form>
 
                 </section>
