@@ -18,7 +18,6 @@ class Settings extends Component {
                        <DeviceConfiguration/>
                     </div>
                     <Sidebar
-                        blog="true"
                     />
                 </div>
             </div>

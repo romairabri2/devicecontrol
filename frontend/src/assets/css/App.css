@@ -190,19 +190,37 @@ body {
  display: block;
  background: black;
  color: white;
- padding: 15px; 
+ padding: 10px; 
  font-weight: bold;
  text-transform: uppercase;
  font-size: 12px;
  text-decoration: none;
- max-width: 100px;
+ max-width: 150px;
  transition: 300ms all;
  border: none;
  cursor:pointer;
 }
 
+.btn-primary{
+  background: #72797a;
+  color: white !important;
+}
+
+.btn-speed{
+  background: #72797a;
+  color: white !important;
+  border:rgb(160, 158, 155) !important;
+  width: 80px;  
+}
+
+.btn-secondary{
+  background: #72797a;
+  color: white !important;
+  float:right;
+}
+
 .btn-success{
-  background: rgb(23, 150, 19);
+  background: rgb(250, 171, 0);
   color: white !important;
 }
 
@@ -214,13 +232,17 @@ body {
 }
 
 .btn-warning{
-  background: rgb(250, 171, 0) !important;
+  background: rgb(250, 225, 0) !important;
   color: white !important;
   float:left
 }
 
 .btn-success:hover{
-  background:black;
+  background:rgb(240, 194, 96);
+}
+
+.btn-secondary:hover{
+  background:rgb(160, 158, 155);
 }
 
 .mid-form{

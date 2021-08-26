@@ -31,14 +31,14 @@ class Sidebar extends Component{
             <aside id="sidebar">
                 
                     <div id="nav-blog" className="sidebar-item">
-                        <Link to={'/device/new'} className="btn btn-success">Add device</Link>
+                        <Link to={'/device/new'} className="btn btn-success">Add new device</Link>
                     </div>
                { this.props.blog !== "true" &&
                 <div id="search" className="sidebar-item">   
                         <p>Search for devices</p>
                         <form onSubmit={this.redirectToSearch}>
                             <input type="text" name="search" ref={this.searchRef}/>
-                            <input type="submit" name="submit" value="Buscar" className="btn btn-secondary" />
+                            <input type="submit" name="submit" value="Search" className="btn btn-primary" />
                         </form>
                 </div>
                 }

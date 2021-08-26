@@ -17,11 +17,11 @@ class Devices extends Component {
 
     componentDidMount() {
         var search = this.props.search;
-             
+
         this.getLastDevices();
         if (search && search !== null && search !== undefined) {
             this.getDevicesBySearch(search);
-        } 
+        }
     }
 
     getDevicesBySearch = (searched) => {
@@ -60,7 +60,7 @@ class Devices extends Component {
             });
     }
 
-    
+
     deleteDevice = (id) => {
 
         swal({
@@ -72,34 +72,38 @@ class Devices extends Component {
         })
 
         axios.delete(this.url + 'device/' + id)
-            .then( res => {
+            .then(res => {
                 this.setState(
                     {
                         device: res.data.device,
                         status: 'success'
                     });
 
-                    swal(
-                        'Dispositivo borrado',
-                        'El dispositivo ha sido borrado correctamente',
-                        'success'
-                    );             
+                swal(
+                    'Dispositivo borrado',
+                    'El dispositivo ha sido borrado correctamente',
+                    'success'
+                );
             });
     }
     render() {
 
-       if (this.state.status === 'deleted') {
+        if (this.state.status === 'deleted') {
             return <Redirect to="/home" />
         }
 
-        if (this.state.devices.length >= 1 && (this.state.status === "success" || this.state.status === "deleted" )) {
+        if (this.state.devices.length >= 1 && (this.state.status === "success" || this.state.status === "deleted")) {
             var listDevices = this.state.devices.map((device) => {
-                return (    
+                return (
                     <tr key={device._id}>
                         <td>{device.type}</td>
-                        <td><Link to={'/device/edit/' + device._id}>{device.label}</Link></td>
-                        <td>{device.manufacturer}</td> 
-                    </tr>         
+                        <td>{device.label}</td>
+                        <td>{device.manufacturer}</td>
+                        <td><Link to={'/device/edit/' + device._id}><i className="fa fa-edit"></i>
+                            </Link>
+                        </td>
+                        
+                    </tr>
                 );
             });
 
@@ -113,7 +117,7 @@ class Devices extends Component {
                             <tr>
                                 <th>Type</th>
                                 <th>Label</th>
-                                <th>Manufacturer</th>
+                                <th colspan="2">Manufacturer</th>
                             </tr>
                         </thead>
                         <tbody>

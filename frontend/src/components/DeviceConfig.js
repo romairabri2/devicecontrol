@@ -175,21 +175,21 @@ class DeviceConfig extends Component {
                                             this.state.device.type === "fan" ? (
                                                 <div>
                                                     <p>
-                                                        <input type="button" id="speed1" value="+ Speed" onClick={this.sumarSpeedKF} />
-                                                        <input type="button" id="speed2" value="- Speed" onClick={this.restarSpeedKF} />
+                                                        <input type="button" id="speed1" className="btn btn-speed" value="+ Speed" onClick={this.sumarSpeedKF} />
+                                                        <input type="button" id="speed2" className="btn btn-speed" value="- Speed" onClick={this.restarSpeedKF} />
                                                     </p>
                                                     <p>
-                                                        <input type="button" id="fanTurn" value="Change" onClick={this.FTurn} />
+                                                        <input type="button" id="fanTurn" className="btn btn-speed" value="Change" onClick={this.FTurn} />
                                                     </p>
 
                                                 </div>
                                             ) : (
-                                             <p><input type="button" id="lightTurn" value="Change" onClick={this.FTurn} /></p>
+                                             <p><input type="button" id="lightTurn" className="btn btn-speed" value="Change" onClick={this.FTurn} /></p>
                                             )
 
                                         }
                                     </td>
-                                    <td><p><input type="button" id="lightTurn" value="Save" onClick={this.saveDevice} /></p></td>
+                                    <td><p><input type="button" id="lightTurn" className="btn btn-success" value="Save" onClick={this.saveDevice} /></p></td>
                                 </tr>
                             </tbody>
                         </table>

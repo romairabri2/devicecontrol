@@ -36,7 +36,7 @@ class EditDevice extends Component {
     });
 
     getDevice = (Id) => {
-       axios.get(this.url + 'device/' + Id)
+        axios.get(this.url + 'device/' + Id)
             .then(res => {
                 this.setState(
                     {
@@ -52,52 +52,52 @@ class EditDevice extends Component {
     deleteDevice = (id) => {
 
         axios.delete(this.url + 'device/' + id)
-            .then( res => {
+            .then(res => {
                 this.setState(
                     {
                         device: res.data.device,
                         status: 'success'
                     });
 
-                    swal(
-                        'Dispositivo borrado',
-                        'El dispositivo ha sido borrado correctamente',
-                        'success'
-                    );            
+                swal(
+                    'Dispositivo borrado',
+                    'El dispositivo ha sido borrado correctamente',
+                    'success'
+                );
             });
     }
 
     changeState = (e) => {
         var device2 = {};
-        
-        if(this.state.device.type === "fan"){
 
-            if(this.state.device.state.turnedOn === "true" || this.state.device.state.turnedOn === "false")
-            this.device_status_turnedOn = this.state.device.state.turnedOn;
+        if (this.state.device.type === "fan") {
 
-            if(this.state.device.state.speed !== "" && this.state.device.state.speed !== undefined)
-            this.device_status_speed = this.state.device.state.speed;
+            if (this.state.device.state.turnedOn === "true" || this.state.device.state.turnedOn === "false")
+                this.device_status_turnedOn = this.state.device.state.turnedOn;
+
+            if (this.state.device.state.speed !== "" && this.state.device.state.speed !== undefined)
+                this.device_status_speed = this.state.device.state.speed;
 
             device2 = {
                 type: this.state.device.type,
                 label: this.labelRef.current.value,
                 manufacturer: this.manufacturerRef.current.value,
-                state : {
+                state: {
                     turnedOn: this.device_status_turnedOn,
                     speed: this.device_status_speed
                 }
             };
         }
-        else{
+        else {
 
-            if(this.state.device.state.turnedOn === "true" || this.state.device.state.turnedOn === "false")
-            this.device_status_turnedOn = this.state.device.state.turnedOn;
+            if (this.state.device.state.turnedOn === "true" || this.state.device.state.turnedOn === "false")
+                this.device_status_turnedOn = this.state.device.state.turnedOn;
 
             device2 = {
                 type: this.state.device.type,
                 label: this.labelRef.current.value,
                 manufacturer: this.manufacturerRef.current.value,
-                state : {
+                state: {
                     turnedOn: this.device_status_turnedOn
                 }
             };
@@ -107,7 +107,7 @@ class EditDevice extends Component {
         this.setState({
             device: device2
         });
-        
+
         this.validator.showMessages();
         this.forceUpdate();
     }
@@ -131,10 +131,10 @@ class EditDevice extends Component {
                             'success'
                         );
 
-                            this.setState({
-                                status: 'success'
-                            });
-                    
+                        this.setState({
+                            status: 'success'
+                        });
+
                     } else {
                         this.setState({
                             status: 'failed'
@@ -160,7 +160,7 @@ class EditDevice extends Component {
 
         if (this.state.device.type) {
             var type = this.state.device.type;
-        }  
+        }
 
         var device = this.state.device;
         return (
@@ -170,7 +170,7 @@ class EditDevice extends Component {
 
                     {this.state.device.type &&
                         <div id="article-data">
-                            <p>Tipo: <strong>{type}</strong></p>
+                            <h3>Tipo: <strong>{type}</strong></h3>
                         </div>
                     }
 
@@ -179,7 +179,7 @@ class EditDevice extends Component {
                     {this.state.device.type &&
 
                         <form className="mid-form" onSubmit={this.saveDevice} onChange={this.changeState}>
-                            
+
                             <div className="form-group">
                                 <label htmlFor="label">Label</label>
                                 <input type="text" name="label" defaultValue={device.label} ref={this.labelRef}></input>
@@ -191,21 +191,21 @@ class EditDevice extends Component {
                                 <input type="text" name="manufacturer" defaultValue={device.manufacturer} ref={this.manufacturerRef}></input>
                                 {this.validator.message('manufacturer', this.state.device.manufacturer, 'required|min:2|max:400|alpha_num_space')}
                             </div>
-            
-                           
-                            <input type="submit" value="Save" className="btn btn-success" />
 
-                            <div className="form-group">
-                            <button onClick={
-                                () => {
-                                    this.deleteDevice(device._id)
-                                }
-                            }
-                                className="btn btn-danger">Delete</button>
-
+                            <div class="row">
+                                <div class="col-md-9 col-md-offset-9 col-xs-12 text-center" >
+                                    <div class="btn-group" role="group">
+                                        <button className="btn btn-success" type="submit"><span ></span>&nbsp;Save</button>
+                                        <button className="btn btn-secondary" type="button" onClick={
+                                            () => {
+                                                this.deleteDevice(device._id)
+                                            }
+                                        }>Delete&nbsp;<span></span></button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
-  
+
                     }
                     {!this.state.device.type &&
                         <h1 className="subheader">Cargando...</h1>

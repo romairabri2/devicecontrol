@@ -21,7 +21,11 @@ class Home extends Component {
                     <Sidebar
                     />
                 </div>
+                 {/* LIMPIAR FLOTADOS */}
+            <div className="clearfix"></div>
             </div>
+           
+            
         );
     }
 }
